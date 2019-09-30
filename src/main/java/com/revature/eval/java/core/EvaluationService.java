@@ -323,8 +323,6 @@ public class EvaluationService {
 			int checkIndex=(this.getSortedList().size()/divider)-1;
 			if (t==this.getSortedList().get(checkIndex))
 				return checkIndex;
-			else if (t<this.getSortedList().get(checkIndex)) {
-			}
 			return 0;	
 		}
 
