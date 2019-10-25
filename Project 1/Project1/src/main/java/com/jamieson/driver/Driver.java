@@ -6,6 +6,6 @@ public class Driver {
 
 	public static void main(String[] args) {
 		UserDao users=new UserDao();
-		System.out.println(users.getUserById(2));
+		System.out.println(users.getUserByUsername("snoopiedogg", "doggpound"));
 	}
 }

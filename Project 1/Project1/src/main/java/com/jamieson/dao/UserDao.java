@@ -15,15 +15,14 @@ public class UserDao {
 		}
 	}
 	
-	public UserModel getUserById(int id) {
-		String username="jeffreydjamieson";
-		String password="j!552148J";
-		String url="jdbc:postgresql://postgresql-class.c4bzybwncbrh.us-east-2.rds.amazonaws.com:5432/postgres?currentSchema=training";
+	public UserModel getUserByUsername(String user, String pass) {
+	
 		
-		try (Connection conn=DriverManager.getConnection(url, username, password)){
-			String sql="select * from users where user_id=?";
+		try (Connection conn=DriverManager.getConnection(Config.getUrl(), Config.getUsername(), Config.getPassword())){
+			String sql="select * from users where user_password = md5(?||?||'hiphop');";
 			PreparedStatement ps=conn.prepareStatement(sql);
-			ps.setInt(1, id);
+			ps.setString(1, user);
+			ps.setString(2, pass);
 			ResultSet rs=ps.executeQuery();	
 			UserModel u=null;
 			while (rs.next()) {
